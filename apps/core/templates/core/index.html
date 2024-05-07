@@ -4,13 +4,20 @@
         <p>Welcome to the core app</p>
         <div class="row">
             <div class="col-sm">
-                teste
+                Ola, {{ usuario.funcionario.nome }}
             </div>
             <div class="col-sm">
                  <form method="post" action="{% url 'logout' %}">
                      {% csrf_token %}
                      <button type="submit" class="btn btn-primary">Logout</button>
                  </form>
+            </div>
+            <div class="col-sm">
+                {% if usuario.funcionario.empresa %}
+                    <a href="">Editar empresa</a>
+                {% else %}
+                    <a href="">Criar empresa</a>
+                {% endif %}
             </div>
         </div>
 

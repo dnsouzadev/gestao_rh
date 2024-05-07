@@ -1,0 +1,12 @@
+{% extends 'basic.html '%}
+
+{% block main %}
+    <div class="mb-3">
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit">Salvar</button>
+        </form>
+    </div>
+
+{% endblock %}
