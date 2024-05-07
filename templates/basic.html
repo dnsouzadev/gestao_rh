@@ -1,16 +1,19 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
+    <div class="container">
+        {% block main %} {% endblock %}
+    </div>
 
-    {% block main %} {% endblock %}
-
-    <footer>
-        <p>Desenvolvido por: <a href="https://www.github.com/dnsouzadev">dnsouzadev</a></p>
-    </footer>
+<!--    <footer>-->
+<!--        <p>Desenvolvido por: <a href="https://www.github.com/dnsouzadev">dnsouzadev</a></p>-->
+<!--    </footer>-->
 
 </body>
 </html>
