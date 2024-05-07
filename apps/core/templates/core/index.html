@@ -1,6 +1,18 @@
 {% extends 'basic.html' %}
-
     {% block main %}
         <h1>Core App</h1>
         <p>Welcome to the core app</p>
+        <div class="row">
+            <div class="col-sm">
+                teste
+            </div>
+            <div class="col-sm">
+                 <form method="post" action="{% url 'logout' %}">
+                     {% csrf_token %}
+                     <button type="submit" class="btn btn-primary">Logout</button>
+                 </form>
+            </div>
+        </div>
+
     {% endblock %}
+
