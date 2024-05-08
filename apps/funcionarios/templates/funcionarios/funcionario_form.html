@@ -2,7 +2,11 @@
 
 {% block main %}
 
-Edit
+{% if object %}
+    <h1>Editar Funcionario</h1>
+{% else %}
+    <h1>Cadastrar Funcionario</h1>
+{% endif %}
 
 <form method="post">
     {% csrf_token %}
