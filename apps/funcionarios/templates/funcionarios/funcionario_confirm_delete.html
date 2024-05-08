@@ -1,0 +1,16 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+<h1>Deletar Funcionario</h1>
+<p>Tem certeza que deseja deletar o funcionario "{{ object.nome }}"?</p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Sim, deletar">
+</form>
+
+
+
+
+<a href="{% url 'list_funcionarios' %}">Cancelar</a>
+{% endblock %}
