@@ -11,7 +11,10 @@
 <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit" class="btn-success" style="text-decoration: none">Salvar</button>
+    <br>
+    <button type="submit" class="btn btn-success">Salvar</button>
 </form>
 
+<br>
+<a href="{% url 'create_documento' %}" class="btn btn-primary">Adicionar Documento</a>
 {% endblock %}
