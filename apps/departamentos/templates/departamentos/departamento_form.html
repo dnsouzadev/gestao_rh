@@ -1,0 +1,14 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+<h1 class="text-bg-info">Cadastrar novo departamento</h1>
+<div class="form-group">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn-info" type="submit" style="text-decoration: none">Salvar</button>
+    </form>
+</div>
+
+
+{% endblock %}

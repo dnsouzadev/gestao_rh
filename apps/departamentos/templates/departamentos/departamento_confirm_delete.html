@@ -1,0 +1,16 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+
+<h1>Confirmação de exclusão</h1>
+
+<p>Tem certeza que deseja excluir o departamento "{{ object.nome }}"?</p>
+
+<form action="{% url 'delete_departamento' object.id %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Sim">
+    <button><a href="{% url 'list_departamento' %}">Não</a></button>
+</form>
+
+{% endblock %}
+

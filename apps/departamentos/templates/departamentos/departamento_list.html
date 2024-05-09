@@ -7,14 +7,14 @@
         <thead>
             <tr>
                 <th>Nome</th>
-<!--                <th>Editar</th>-->
-<!--                <th>Deletar</th>-->
             </tr>
         </thead>
         <tbody>
             {% for departamento in object_list %}
                 <tr>
                     <td>{{ departamento.nome }}</td>
+                    <td><a href="{% url 'update_departamento' departamento.id %}">Editar</a></td>
+                    <td><a href="{% url 'delete_departamento' departamento.id %}">Deletar</a></td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -23,6 +23,7 @@
     <p>Nenhum departamento cadastrado</p>
 {% endif %}
 
+    <button class="btn-info"><a href="{% url 'create_departamento' %}" style="text-decoration: none">Cadastrar novo departamento</a></button>
 
 
 {% endblock %}
