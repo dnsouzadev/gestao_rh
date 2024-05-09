@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+
+{% if object_list %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+<!--                <th>Editar</th>-->
+<!--                <th>Deletar</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            {% for departamento in object_list %}
+                <tr>
+                    <td>{{ departamento.nome }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhum departamento cadastrado</p>
+{% endif %}
+
+
+
+{% endblock %}

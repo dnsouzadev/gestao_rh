@@ -5,7 +5,12 @@
         <div class="row">
             <div class="col-sm">
                 Ola, {{ usuario.funcionario.nome }}
+            </div>
+            <div class="col-sm">
                 <a href="{% url 'list_funcionarios' %}">Gerenciar Funcionarios</a>
+            </div>
+            <div class="col-sm">
+                <a href="{% url 'list_departamentos' %}">Gerenciar Departamentos</a>
             </div>
             <div class="col-sm">
                  <form method="post" action="{% url 'logout' %}">
