@@ -1,5 +1,5 @@
 {% extends 'basic.html' %}
-
+{% load crispy_forms_tags %}
 {% block main %}
 
 {% if object %}
@@ -10,8 +10,8 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn" style="text-decoration: none">Salvar</button>
+    {{ form|crispy }}
+    <button type="submit" class="btn-success" style="text-decoration: none">Salvar</button>
 </form>
 
 {% endblock %}
