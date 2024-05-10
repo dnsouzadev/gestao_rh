@@ -1,8 +1,9 @@
 {% extends 'basic.html' %}
-
 {% load crispy_forms_tags %}
 
 {% block main %}
+
+{{ form.errors }}
 
 {% if object %}
     <h1>Editar Documento</h1>
@@ -10,13 +11,10 @@
     <h1>Cadastrar Documento</h1>
 {% endif %}
 
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
     <br>
-    <button type="submit" class="btn btn-success" style="text-decoration: none">Adicionar</button>
+    <button type="submit" class="btn btn-success">Adicionar</button>
 </form>
-
-<br>
-
 {% endblock %}

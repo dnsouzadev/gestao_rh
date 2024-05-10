@@ -1,0 +1,5 @@
+Todos os exercícios e projetos estão em ... 
+
+Microsserviços --> https://github.com/leandrocgsi/erudio-microservices
+
+Config Server  --> https://github.com/leandrocgsi/erudio-config-server
