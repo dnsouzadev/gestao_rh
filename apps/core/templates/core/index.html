@@ -1,31 +1,83 @@
-{% extends 'basic.html' %}
-    {% block main %}
-        <h1>Core App</h1>
-        <p>Welcome to the core app</p>
-        <div class="row">
-            <div class="col-sm">
-                Ola, {{ usuario.funcionario.nome }}
-            </div>
-            <div class="col-sm">
-                <a href="{% url 'list_funcionarios' %}">Gerenciar Funcionarios</a>
-            </div>
-            <div class="col-sm">
-                <a href="{% url 'list_departamento' %}">Gerenciar Departamentos</a>
-            </div>
-            <div class="col-sm">
-                 <form method="post" action="{% url 'logout' %}">
-                     {% csrf_token %}
-                     <button type="submit" class="btn btn-primary">Logout</button>
-                 </form>
-            </div>
-            <div class="col-sm">
-                {% if usuario.funcionario.empresa %}
-                    <a href="{% url 'edit_empresa' usuario.funcionario.empresa.id %}">Editar empresa</a>
-                {% else %}
-                    <a href="{% url 'create_empresa' %}">Criar empresa</a>
-                {% endif %}
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Core App</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+        text-align: center;
+    }
+    .lead {
+        font-size: 18px;
+        margin-bottom: 30px;
+        color: #555;
+        text-align: center;
+    }
+    .btn-logout {
+        margin-bottom: 20px;
+    }
+    .btn-action {
+        margin-bottom: 20px;
+    }
+    .footer {
+        margin-top: 50px;
+        text-align: center;
+        color: #777;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <form method="post" action="{% url 'logout' %}" class="text-end mb-4">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Logout</button>
+    </form>
+
+    <h1>Bem-vindo ao Core App</h1>
+    <p class="lead">Aqui você pode gerenciar funcionários e departamentos da sua empresa.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <a href="{% url 'list_funcionarios' %}" class="btn btn-primary btn-lg btn-block btn-action py-4">Gerenciar Funcionários</a>
         </div>
+        <div class="col-md-6">
+            <a href="{% url 'list_departamento' %}" class="btn btn-primary btn-lg btn-block btn-action py-4">Gerenciar Departamentos</a>
+        </div>
+    </div>
 
-    {% endblock %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            {% if usuario.funcionario.empresa %}
+                <a href="{% url 'edit_empresa' usuario.funcionario.empresa.id %}" class="btn btn-secondary btn-lg">Editar Empresa</a>
+            {% else %}
+                <a href="{% url 'create_empresa' %}" class="btn btn-secondary btn-lg">Criar Empresa</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
+<footer class="footer">
+    <p>Criado com ❤️ por Você - <a href="#">Sobre</a></p>
+</footer>
+
+</body>
+</html>
