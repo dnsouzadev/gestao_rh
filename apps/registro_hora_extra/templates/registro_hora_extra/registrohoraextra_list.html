@@ -33,32 +33,39 @@
 
 
 {% block main %}
+<div class="container">
     <h1>Registro de horas extras</h1>
-    <a href="">Novo</a>
+    <a href="{% url 'create_hora_extra' %}" class="btn btn-primary">Novo registro</a>
     <table class="table">
         <thead>
             <tr>
-                <th>Funcionário</th>
-                <th>Quantidade de horas</th>
+                <th>Colaborador</th>
                 <th>Motivo</th>
+                <th>Horas</th>
+                <th>Data</th>
                 <th>Utilizada</th>
                 <th>Justificativa</th>
                 <th>Atualizado em</th>
-                <th>Criado em</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             {% for registrohoraextra in object_list %}
-                <tr>
-                    <td>{{ registrohoraextra.funcionario }}</td>
-                    <td>{{ registrohoraextra.horas }}</td>
-                    <td>{{ registrohoraextra.motivo }}</td>
-                    <td>{{ registrohoraextra.utilizada }}</td>
-                    <td>{{ registrohoraextra.justificativa }}</td>
-                    <td>{{ registrohoraextra.atualizado_em }}</td>
-                    <td>{{ registrohoraextra.criado_em }}</td>
-                </tr>
+            <tr>
+                <td>{{ registrohoraextra.funcionario }}</td>
+                <td>{{ registrohoraextra.motivo }}</td>
+                <td>{{ registrohoraextra.horas }}</td>
+                <td>{{ registrohoraextra.data }}</td>
+                <td>{{ registrohoraextra.utilizada }}</td>
+                <td>{{ registrohoraextra.justificativa }}</td>
+                <td>{{ registrohoraextra.atualizado_em }}</td>
+                <td>
+                    <a href="{% url 'update_hora_extra' registrohoraextra.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'delete_hora_extra' registrohoraextra.id %}" class="btn btn-danger">Deletar</a>
+                </td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
 {% endblock %}
