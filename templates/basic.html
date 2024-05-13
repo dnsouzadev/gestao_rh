@@ -4,6 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+    <style>
+        {% block style %}
+        {% endblock %}
+    </style>
     <title>{% block title %} {% endblock %}</title>
 </head>
 <body>
