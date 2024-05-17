@@ -60,7 +60,7 @@
                 <td>{{ registrohoraextra.justificativa }}</td>
                 <td>{{ registrohoraextra.atualizado_em }}</td>
                 <td>
-                    <a href="{% url 'update_hora_extra' registrohoraextra.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'update_hora_extra_base' registrohoraextra.id %}" class="btn btn-primary">Editar</a>
                     <a href="{% url 'delete_hora_extra' registrohoraextra.id %}" class="btn btn-danger">Deletar</a>
                 </td>
             </tr>
