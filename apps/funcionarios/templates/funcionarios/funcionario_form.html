@@ -19,14 +19,34 @@
 {% if object %}
     <a href="{% url 'create_documento' object.id %}" class="btn btn-primary">Adicionar Documento</a><br><br>
 {% endif %}
+<hr>
+{% if object.registrohoraextra_set.all %}
+    <h2>Banco de Horas</h2>
+{% for horas in object.registrohoraextra_set.all %}
+    <br>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                Motivo: {{ horas.motivo }} | Horas: {{ horas.horas }}
+            </h5>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'update_hora_extra' horas.id %}" class="btn btn-warning">Editar</a>
+            <a href="" class="btn btn-danger">Excluir</a>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+{% endif %}
+<p>
+        <strong>Total de horas extras: {{ object.total_horas_extra }}</strong>
+    </p>
+
+
 
 {% if object.documento_set.all %}
+<hr>
     <h2>Documentos</h2>
-{% else %}
-    <h2>Nenhum documento cadastrado</h2>
-{% endif %}
-
-
 {% for documento in object.documento_set.all %}
     <br>
     <div class="card">
@@ -43,6 +63,9 @@
 
     </div>
 {% endfor %}
+{% endif %}
+
+
 
 
 {% endblock %}
