@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Core App</title>
+{% extends 'basic.html' %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f8f9fa;
-    }
+{% block style %}
     .container {
         max-width: 800px;
         margin: 50px auto;
@@ -37,15 +28,9 @@
     .btn-action {
         margin-bottom: 20px;
     }
-    .footer {
-        margin-top: 50px;
-        text-align: center;
-        color: #777;
-    }
-</style>
-</head>
-<body>
-
+{% endblock %}
+{% block title %} Pagina Inicial {% endblock %}
+{% block main %}
 <div class="container">
     <form method="post" action="{% url 'logout' %}" class="text-end mb-4">
         {% csrf_token %}
@@ -77,10 +62,8 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-   <p>Criado com ❤️ por Você - <a href="https://github.com/dnsouzadev">Sobre</a ></p>
-</footer>
-
-</body>
+    </body>
 </html>
+{% endblock %}
+
+
