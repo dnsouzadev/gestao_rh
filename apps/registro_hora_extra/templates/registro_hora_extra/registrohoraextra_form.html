@@ -83,6 +83,8 @@
     {% if object %}
         <button onclick="utilizouHoraExtra({{ object.id }})" class="btn btn-info">Marcar como utilizado</button>
         <p id="mensagem"></p>
+
+        <h3 id="horas_atualizadas">{{ object.funcionario.total_horas_extra }}</h3>
     {% endif %}
 
     </div>

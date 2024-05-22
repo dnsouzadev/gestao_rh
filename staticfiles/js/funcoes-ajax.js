@@ -1,3 +1,5 @@
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
 const utilizouHoraExtra = (id) => {
     let token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
 
@@ -8,8 +10,13 @@ const utilizouHoraExtra = (id) => {
             csrfmiddlewaretoken: token,
         },
         success: function(response) {
-            console.log('sucesso');
+            console.log(response);
             $("#mensagem").text('Hora extra utilizada com sucesso!')
+            sleep(4000).then(() => {
+                $("#mensagem").hide();
+            });
+            $("#horas_atualizadas").text(response.horas)
         }
     });
 }
+
