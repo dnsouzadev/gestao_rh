@@ -1,5 +1,9 @@
+import json
+
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.views import View
 from django.views.generic import ListView, UpdateView, CreateView, DeleteView
 from .forms import RegistroHoraExtraForm
 from apps.registro_hora_extra.models import RegistroHoraExtra
@@ -43,6 +47,7 @@ class HoraExtraDelete(DeleteView):
 class HoraExtraEditBase(UpdateView):
     model = RegistroHoraExtra
     form_class = RegistroHoraExtraForm
+
     # success_url = reverse_lazy('list_hora_extra')
 
     def get_success_url(self):
@@ -52,3 +57,9 @@ class HoraExtraEditBase(UpdateView):
         kwargs = super(HoraExtraEditBase, self).get_form_kwargs()
         kwargs.update({'user': self.request.user})
         return kwargs
+
+
+class UtilizouHoraExtra(View):
+    def post(self, *args, **kwargs):
+        response = json.dumps({'mensagem': 'Requisição POST', 'pk': kwargs['pk']})
+        return HttpResponse(response, content_type='application/json')

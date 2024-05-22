@@ -1,5 +1,6 @@
 {% extends 'basic.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 {% block title %}Registro de Hora Extra{% endblock %}
 
 {% block style %}
@@ -78,5 +79,16 @@
             {{ form|crispy }}
             <button type="submit">Submit</button>
         </form>
+    <br>
+    {% if object %}
+        <button onclick="utilizouHoraExtra({{ object.id }})" class="btn btn-info">Marcar como utilizado</button>
+        <p id="mensagem"></p>
+    {% endif %}
+
     </div>
+
+    {% block static %}
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/funcoes-ajax.js' %}"></script>
+    {% endblock %}
 {% endblock %}
