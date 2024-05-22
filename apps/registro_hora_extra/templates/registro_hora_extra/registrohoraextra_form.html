@@ -81,10 +81,12 @@
         </form>
     <br>
     {% if object %}
-        <button onclick="utilizouHoraExtra({{ object.id }})" class="btn btn-info">Marcar como utilizado</button>
+        <h4>Utilizou hora extra?</h4>
+        <input type="checkbox" onchange="utilizouHoraExtra({{ object.id }})" class="btn btn-info">
+
         <p id="mensagem"></p>
 
-        <h3 id="horas_atualizadas">{{ object.funcionario.total_horas_extra }}</h3>
+        <h3 id="horas_atualizadas">{{ object.funcionario.total_horas_extra }} hora extra disponíveis</h3>
     {% endif %}
 
     </div>

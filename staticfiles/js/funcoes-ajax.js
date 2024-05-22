@@ -10,12 +10,17 @@ const utilizouHoraExtra = (id) => {
             csrfmiddlewaretoken: token,
         },
         success: function(response) {
-            console.log(response);
-            $("#mensagem").text('Hora extra utilizada com sucesso!')
-            sleep(4000).then(() => {
+            // console.log(response);
+            sleep(1000).then(() => {
                 $("#mensagem").hide();
+                window.location.reload();
             });
-            $("#horas_atualizadas").text(response.horas)
+            let horas = response.horas;
+            if (horas == 0) {
+                $("#horas_atualizadas").text('0 hora extra disponível')
+            } else {
+                $("#horas_atualizadas").text(response.horas + ' horas disponíveis')
+            }
         }
     });
 }
