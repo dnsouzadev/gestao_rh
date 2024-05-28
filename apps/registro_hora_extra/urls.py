@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import HoraExtraList, HoraExtraEdit, HoraExtraCreate, HoraExtraDelete, HoraExtraEditBase, UtilizouHoraExtra, ExportarParaCSV
+from .views import HoraExtraList, HoraExtraEdit, HoraExtraCreate, HoraExtraDelete, HoraExtraEditBase, UtilizouHoraExtra, ExportarParaCSV, ExportExcel
 
 urlpatterns = [
     path('', HoraExtraList.as_view(), name='list_hora_extra'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('novo/', HoraExtraCreate.as_view(), name='create_hora_extra'),
     path('delete/<int:pk>/', HoraExtraDelete.as_view(), name='delete_hora_extra'),
     path('exportar-csv', ExportarParaCSV.as_view(), name='exportar_csv'),
+    path('exportar-excel', ExportExcel.as_view(), name='exportar_excel')
 ]
