@@ -1,7 +1,113 @@
 {% extends 'basic.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Funcionarios{% endblock %}
+{% block style %}
+/* Custom styles for the table */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    border: 1px solid #dee2e6;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+/* Styles for buttons */
+button.btn-info, button.btn-edit, button.btn-delete {
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-info {
+    background-color: #17a2b8;
+}
+
+button.btn-info:hover {
+    background-color: #138496;
+}
+
+button.btn-info a {
+    color: white;
+    text-decoration: none;
+}
+
+button.btn-info a:hover {
+    color: white;
+}
+
+button.btn-edit {
+    background-color: #007bff;
+}
+
+button.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+button.btn-edit a {
+    color: white;
+    text-decoration: none;
+}
+
+button.btn-edit a:hover {
+    color: white;
+}
+
+button.btn-delete {
+    background-color: #dc3545;
+}
+
+button.btn-delete:hover {
+    background-color: #c82333;
+}
+
+button.btn-delete a {
+    color: white;
+    text-decoration: none;
+}
+
+button.btn-delete a:hover {
+    color: white;
+}
+
+/* General page styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+table {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+{% endblock %}
 
 {% block main %}
-{% load crispy_forms_tags %}
+
 
 {% if object_list %}
     <table class="table">
@@ -20,8 +126,16 @@
                     <td>{{ funcionario.nome }}</td>
 <!--                    <td>{{ funcionario.cpf }}</td>-->
                     <td>{{ funcionario.empresa }}</td>
-                    <td><a href="{% url 'edit_funcionarios' funcionario.id %}">Editar</a></td>
-                    <td><a href="{% url 'delete_funcionarios' funcionario.id %}">Deletar</a></td>
+                    <td>
+                    <button class="btn-edit">
+                            <a href="{% url 'edit_funcionarios' funcionario.id %}">Editar</a>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn-delete">
+                            <a href="{% url 'delete_funcionarios' funcionario.id %}">Deletar</a>
+                        </button>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
@@ -30,8 +144,12 @@
     <p>Nenhum funcionario cadastrado</p>
 {% endif %}
 
-    <button class="btn-info"><a href="{% url 'create_funcionarios' %}">Cadastrar novo funcionario</a></button>
+    <button class="btn-info">
+        <a href="{% url 'create_funcionarios' %}">Cadastrar novo funcionario</a>
+    </button>
 
-    <button class="btn btn-success"><a href="{% url 'pdf_funcionarios' %}">ABRIR PDF</a></button>
+    <button class="btn-info">
+        <a href="{% url 'relatorio_funcionarios' %}">Gerar Relatorio Funcionarios</a>
+    </button>
 
 {% endblock %}

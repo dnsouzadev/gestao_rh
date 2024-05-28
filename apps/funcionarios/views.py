@@ -50,7 +50,7 @@ class FuncionarioCreate(CreateView):
         return super(FuncionarioCreate, self).form_valid(form)
 
 
-def test_view(request):
+def pdf_view(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="mypdf.pdf"'
 
@@ -59,7 +59,7 @@ def test_view(request):
 
     p.drawString(150, 810, 'Relatório de Funcionários')
 
-    funcionarios = Funcionario.objects.all()
+    funcionarios = Funcionario.objects.filter(empresa=request.user.funcionario.empresa)
 
     str = 'Nome: %s | Hora Extra: %s'
 
