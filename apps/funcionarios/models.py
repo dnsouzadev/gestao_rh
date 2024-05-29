@@ -9,6 +9,7 @@ class Funcionario(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
     departamentos = models.ManyToManyField(Departamento)
     empresa = models.ForeignKey(Empresa, on_delete=models.PROTECT, null=True, blank=True)
+    imagem = models.ImageField(upload_to='funcionarios', null=True, blank=True)
 
     @property
     def total_horas_extra(self):
