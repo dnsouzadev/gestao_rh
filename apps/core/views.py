@@ -1,9 +1,11 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
 from .serializers import GroupSerializer, UserSerializer
+from .tasks import send_relatorio
 
 
 @login_required
@@ -28,3 +30,8 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all().order_by('name')
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+
+def celery(request):
+    send_relatorio.delay()
+    return HttpResponse('Relatório sendo gerado em background')
