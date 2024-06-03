@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     "crispy_bootstrap4",
     'rest_framework',
     'rest_framework.authtoken',
+    'django_celery_results',
     # APPS
     'apps.empresas',
     'apps.funcionarios',
@@ -129,3 +130,5 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+CELERY_RESULT_BACKEND = 'django-db'
