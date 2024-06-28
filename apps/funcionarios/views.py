@@ -18,8 +18,19 @@ class FuncionariosList(ListView):
     model = Funcionario
 
     def get_queryset(self):
-        empresa_logada = self.request.user.funcionario.empresa
-        return Funcionario.objects.filter(empresa=empresa_logada)
+        user = self.request.user
+        try:
+            empresa_logada = user.funcionario.empresa
+        except AttributeError:
+            return Funcionario.objects.none()  # Retorna um queryset vazio
+
+        funcionarios = Funcionario.objects.filter(empresa=empresa_logada)
+
+        if not funcionarios.exists():
+
+            return Funcionario.objects.none()  # Retorna um queryset vazio
+
+        return funcionarios
 
 
 class FuncionarioEdit(UpdateView):
@@ -27,9 +38,11 @@ class FuncionarioEdit(UpdateView):
     fields = ['nome', 'departamentos']
     success_url = reverse_lazy('list_funcionarios')
 
+
     def get_queryset(self):
         empresa_logada = self.request.user.funcionario.empresa
-        return Funcionario.objects.filter(empresa=empresa_logada)
+        funcionarios =  Funcionario.objects.filter(empresa=empresa_logada)
+        return funcionarios
 
 
 class FuncionarioDelete(DeleteView):

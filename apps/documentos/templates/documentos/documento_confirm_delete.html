@@ -1,0 +1,14 @@
+{% extends 'basic.html' %}
+
+{% block main %}
+
+<div>
+    <h1>Confirma a exclusão do documento?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Sim</button>
+        <a href="{% url 'list_funcionarios' %}" class="btn btn-info">Não</a>
+    </form>
+</div>
+
+{% endblock %}

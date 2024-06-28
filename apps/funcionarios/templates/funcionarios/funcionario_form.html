@@ -57,8 +57,8 @@
         </div>
         <div class="card-body">
             <a href="{{ documento.arquivo.url }}"  class="btn btn-success"target="_blank">Visualizar</a>
-            <a href="" class="btn btn-warning">Editar</a>
-            <a href="" class="btn btn-danger">Excluir</a>
+            <a href="{% url 'update_documento' documento.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'delete_documento' documento.id %}" class="btn btn-danger">Excluir</a>
         </div>
 
     </div>
