@@ -128,6 +128,7 @@ table {
                     <td>{{ funcionario.empresa }}</td>
                     <td>
                     <button class="btn-edit">
+                        {{ funcionario.id }}
                             <a href="{% url 'edit_funcionarios' funcionario.id %}">Editar</a>
                         </button>
                     </td>
